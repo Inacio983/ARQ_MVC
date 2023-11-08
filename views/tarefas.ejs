@@ -1,0 +1,38 @@
+
+		<h1>Lista de Tarefas</h1> 
+		<ul class="list-group">
+			
+			<% tarefas.forEach(tarefa => { %> 
+				<li class="list-group-item" style="display:flex; justify-content: space-between">
+					<div>
+						<a href="/tarefa/<%- tarefa.id_tarefa %>"><%= tarefa.title %></a>
+					</div>
+					<div>
+						<a href="/tarefa/edit/<%- tarefa.id_tarefa %>">
+							<i class="bi-pencil-square"style="font-size: 1rem; color: #00f;"></i>
+						</a>
+						<a href="/tarefa/delete/<%- tarefa.id_tarefa %>">
+							<i class="bi-x-circle"style="font-size: 1rem; color: #F00;"></i>
+						</a>
+					</div>
+					
+				</li> 
+				<% }); %> 
+		</ul> 
+		<hr/>
+		<form action="/tarefa" method="POST"> 
+		
+		<div class="mb-3">
+			<label for="tituloTarefa" class="form-label">Título</label>
+			<input type="text" name="titulo" class="form-control placeholder="Nova Tarefa"> 
+		</div>
+		<div class="mb-3">
+			<label for="descricaoTarefa" class="form-label">Descrição</label>
+			<textarea class="form-control" name="descricao" id="descricaoTarefa" rows="3"></textarea>
+		</div>
+		<div class="mb-3">
+			<button type="submit">Adicionar</button> 
+		</div>
+		
+	</form> 
+	

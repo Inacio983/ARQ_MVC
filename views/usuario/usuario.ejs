@@ -1,0 +1,25 @@
+<div class="card mb-3"  style="max-width: 540px; margin: 0 auto;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <% if (usuario.imagem != '') { %>
+				<img src="<%- usuario.imagem %>" class="card-img-top" alt="<%- usuario.nome %>">
+			<% } else { %>
+				<img src="/img/user.jpg" class="card-img-top" alt="Nada">	
+			<% } %>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><%- usuario.nome %></h5>        
+      </div>
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item"><%- usuario.email %></li>
+				
+			</ul>
+			<div class="card-body">
+				<a href="/usuario/editar/<%- usuario.id_usuario %>">
+					<i class="bi-pencil-square"style="font-size: 1rem; color: #00f;"></i>
+				</a>
+			</div>
+    </div>
+  </div>
+</div>

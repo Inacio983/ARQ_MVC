@@ -1,0 +1,33 @@
+header {
+	border-bottom: 2px solid #5ac657;
+	display: flex;
+}
+
+header #logo{
+	height: 20vw;
+	margin: 0 auto;
+}
+header #logo{
+	height: 10vh;
+	width: 80vw;
+	margin: 0 auto;
+}
+
+header #logo img{
+	height: 10vh;
+}
+main{
+	margin-left: 3vw;
+	margin-right: 2vw;
+	margin-top: 5vh;
+	min-height: 80vh;
+}
+
+h1 {
+	color:#5ac657;
+}
+a {
+	text-decoration: none;
+	font-size: 1.5rem;
+	font-weight: bold;
+}

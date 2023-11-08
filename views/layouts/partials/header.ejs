@@ -1,0 +1,17 @@
+<header>
+	<div id="logo"><img src="<%- locals.layoutVariables.img %>logo.png" /></div>
+	<div id="display"></div>
+	<div id="user">
+		<% if(locals.layoutVariables.user){ %>
+			<p>
+				<i class="bi-person" style="font-size: 1rem; color: #0f0;"></i>
+				<a href="/usuario/perfil/<%- locals.layoutVariables.user.id_usuario %>" >
+					<%- locals.layoutVariables.user.nome %>
+				</a>
+				<a href="/logout" class="btn-primary">
+					<i class="bi-arrow-right"style="font-size: 1rem; color: #Ff0;"></i>
+				</a>
+			</p>
+		<%}%>		
+	</div>
+</header>
