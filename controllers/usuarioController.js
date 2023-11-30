@@ -15,7 +15,7 @@ async function autenticar(req,res) {
 	const resp = await Usuario.autenticar(req.body.email, req.body.senha);
 	if (resp && resp.length > 0) {
 		req.session.user = resp[0];
-		res.redirect('/');
+		res.redirect('/tarefas');
 	} else {
 			res.redirect('/login');
 	}

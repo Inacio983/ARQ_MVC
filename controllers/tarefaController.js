@@ -28,7 +28,7 @@ async function addTarefa(req, res) {
 
 async function deleteTarefa(req, res){
 	let msg = null;
-	if(await Tarefa.deleteTarefa(req.params.id_tarefa)){
+	if(await Tarefa.deleteTarefa(req.params.idTarefa)){
 		msg = {
 			class: "alert-success",
 			msg: "Tarefa excluida com extremo sucesso!"
