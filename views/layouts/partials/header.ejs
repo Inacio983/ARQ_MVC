@@ -5,9 +5,6 @@
 		<% if(locals.layoutVariables.user){ %>
 			<p>
 				<i class="bi-person" style="font-size: 1rem; color: #0f0;"></i>
-				<a href="/logout" >
-					Logout
-				</a>
 				<a href="/usuario/perfil/<%- locals.layoutVariables.user.id_usuario %>" >
 					<%- locals.layoutVariables.user.nome %>
 				</a>

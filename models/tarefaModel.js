@@ -1,13 +1,14 @@
 class Tarefa { 
-	constructor(id, title, description) { 
+	constructor(id, title, description, idUsuario) { 
 		this.id = id; 
 		this.title = title; 
 		this.description = description; 
+		this.usuario_id_usuario = idUsuario;
 	} 
 
-	static async listarTarefas(){
+	static async listarTarefas(id_usuario){
 		const Database= require('./Database');
-		return await Database.query("SELECT * FROM tarefa");		
+		return await Database.query("SELECT * FROM tarefa WHERE usuario_id_usuario="+id_usuario);		
 	}
 
 	static async buscarTarefa(id_tarefa){

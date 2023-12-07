@@ -30,6 +30,11 @@
 			<label for="descricaoTarefa" class="form-label">Descrição</label>
 			<textarea class="form-control" name="descricao" id="descricaoTarefa" rows="3"></textarea>
 		</div>
+		
+		<div class="mb-3">
+			<input type="text" name="idUsuario" class="form-control" value="<%- locals.layoutVariables.user.id_usuario %>"> 
+		</div>
+
 		<div class="mb-3">
 			<button type="submit">Adicionar</button> 
 		</div>

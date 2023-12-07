@@ -1,15 +1,16 @@
 header {
-	border-bottom: 2px solid #5ac657;
+	border-bottom: 2px solid #c65757;
 	display: flex;
 }
 
 header #logo{
-	height: 20vw;
+	height: 10vh;
+	width: 20vw;
 	margin: 0 auto;
 }
-header #logo{
+header #display{
 	height: 10vh;
-	width: 80vw;
+	width: 60vw;
 	margin: 0 auto;
 }
 

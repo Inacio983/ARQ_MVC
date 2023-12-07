@@ -21,6 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(session({secret:'i1n2f3o4'}));
 
 app.use((req, res, next) => {
+	
 	if(!req.session.user){
 		if(req.originalUrl == "/login" || req.originalUrl == "/autenticar"){
 			app.set('layout', './layouts/default/login');
@@ -35,6 +36,7 @@ app.use((req, res, next) => {
 			res.redirect('/login');
 		}	
 	}else{
+		console.log(req.session);
 		app.set('layout', './layouts/default/index');
 		res.locals.layoutVariables = {
 			url : process.env.URL,
@@ -53,9 +55,17 @@ app.use((req, res, next) => {
 
 //ROTA
 app.get('/', (req,res)=>{ 
+	
 	res.render('home');	
 })
-app.get('/tarefas', tarefaController.getTarefas); 
+//app.get('/tarefas', tarefaController.getTarefas(req,res)); 
+
+app.get('/tarefas', (req, res)=>{ 
+	console.log(req.session);
+	
+	tarefaController.getTarefas(req, res);
+});
+
 app.
 get('/tarefas/:query', tarefaController.getTarefas); 
 app.post('/tarefa', tarefaController.addTarefa);

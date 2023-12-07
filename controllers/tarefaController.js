@@ -1,7 +1,8 @@
 const Tarefa = require('../models/tarefaModel');
 let tarefas = [];
 async function getTarefas(req, res) {
-	tarefas= await Tarefa.listarTarefas();
+	console.log("gettarefas 2 req"+req);
+	tarefas= await Tarefa.listarTarefas(req.session.user.id_usuario);
 	res.render('tarefas', { tarefas });
 }
 
@@ -19,8 +20,8 @@ async function getTarefa(req, res) {
 } 
 
 async function addTarefa(req, res) { 
-	const { titulo, descricao } = req.body; 
-	const tarefa = new Tarefa(null, titulo, descricao); 
+	const { titulo, descricao, idUsuario } = req.body; 
+	const tarefa = new Tarefa(null, titulo, descricao, idUsuario); 
 	await tarefa.salvar();
 	res.redirect('/tarefas'); 
 } 
