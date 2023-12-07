@@ -31,7 +31,7 @@ class Tarefa {
 
 	async salvar(){
 		const Database= require('./Database');
-		let resp = await Database.query(`INSERT INTO tarefa (title,description) VALUES ('${this.title}','${this.description}')`);
+		let resp = await Database.query(`INSERT INTO tarefa (title,description,usuario_id_usuario) VALUES ('${this.title}','${this.description}',${this.usuario_id_usuario})`);
 		console.log(resp);
 		this.id=resp.insertId;
 	}

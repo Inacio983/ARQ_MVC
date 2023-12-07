@@ -20,8 +20,9 @@ async function getTarefa(req, res) {
 } 
 
 async function addTarefa(req, res) { 
-	const { titulo, descricao, idUsuario } = req.body; 
-	const tarefa = new Tarefa(null, titulo, descricao, idUsuario); 
+	const { titulo, descricao } = req.body; 
+	const idUsu = req.session.user.id_usuario;
+	const tarefa = new Tarefa(null, titulo, descricao, idUsu); 
 	await tarefa.salvar();
 	res.redirect('/tarefas'); 
 } 
