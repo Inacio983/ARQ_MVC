@@ -1,7 +1,6 @@
 const Tarefa = require('../models/tarefaModel');
 let tarefas = [];
 async function getTarefas(req, res) {
-	console.log("gettarefas 2 req"+req);
 	tarefas= await Tarefa.listarTarefas(req.session.user.id_usuario);
 	res.render('tarefas', { tarefas });
 }
@@ -47,8 +46,13 @@ async function deleteTarefa(req, res){
 	}
 }
 
+async function checar(req, res){
+await Tarefa.checar(req.params.idTarefa, req.session.user.id_usuario);
+res.redirect("/tarefas");
+}
+
 async function editTarefa(req, res){
 
 }
 
-module.exports = { getTarefas, getTarefa, addTarefa, deleteTarefa, editTarefa };
+module.exports = { getTarefas, getTarefa, addTarefa, deleteTarefa, editTarefa, checar };

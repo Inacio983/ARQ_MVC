@@ -25,11 +25,12 @@ class Usuario {
 		
 	}
 
-	async salvar(){
+	static async salvar(req, idUsuario){
 		const Database= require('./Database');
-		let resp = await Database.query(`INSERT INTO usuario () VALUES ()`);
+		await Database.query(`UPDATE usuario SET nome='${req.nome}' , email= '${req.email}' WHERE id_usuario=${idUsuario};`);
 		
-		this.id=resp.insertId;
+		return await Database.query(`SELECT * FROM usuario WHERE id_usuario=${idUsuario}`);
+		
 	}
 
 } 

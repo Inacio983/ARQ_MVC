@@ -1,8 +1,9 @@
 class Tarefa { 
-	constructor(id, title, description, idUsuario) { 
+	constructor(id, title, description, idUsuario, status) { 
 		this.id = id; 
 		this.title = title; 
 		this.description = description; 
+		this.status = status;
 		this.usuario_id_usuario = idUsuario;
 	} 
 
@@ -29,11 +30,20 @@ class Tarefa {
 		}		
 	}
 
-	async salvar(){
+	static async salvar(){
 		const Database= require('./Database');
 		let resp = await Database.query(`INSERT INTO tarefa (title,description,usuario_id_usuario) VALUES ('${this.title}','${this.description}',${this.usuario_id_usuario})`);
-		console.log(resp);
-		this.id=resp.insertId;
+	}
+
+	static async checar(id_tarefa, idUsuario){
+		const Database= require('./Database');
+		let resp = await Database.query("SELECT * FROM tarefa WHERE id_tarefa="+id_tarefa+" AND usuario_id_usuario="+idUsuario);
+		if(resp[0].status == 'P'){
+			await Database.query("UPDATE tarefa SET status='F' WHERE id_tarefa="+id_tarefa+" AND usuario_id_usuario="+idUsuario);
+		}else{
+			await Database.query("UPDATE tarefa SET status='P' WHERE id_tarefa="+id_tarefa+" AND usuario_id_usuario="+idUsuario);
+		}
+
 	}
 } 
 

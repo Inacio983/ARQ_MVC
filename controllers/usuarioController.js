@@ -57,6 +57,21 @@ async function mostrarPerfil(req,res) {
 	
 }
 
+async function salvar(req,res) {
+	const resp = await Usuario.salvar(req.body,req.session.user.id_usuario);
+	if (resp && resp.length > 0) {
+		let usuario = resp[0];
+		delete usuario.senha;
+		res.render('usuario/formUsuario', { usuario });
+	} else {
+		msg = {
+			class: "alert-danger",
+			msg: "Perfil não encontrado!"
+		}
+		res.redirect('/');
+	}	
+}
+
 
 
 
@@ -67,5 +82,6 @@ module.exports = {
 	autenticar, 
 	logout, 
 	mostrarPerfil, 
-	editar 
+	editar,
+	salvar
 };

@@ -36,7 +36,7 @@ app.use((req, res, next) => {
 			res.redirect('/login');
 		}	
 	}else{
-		console.log(req.session);
+		//console.log(req.session);
 		app.set('layout', './layouts/default/index');
 		res.locals.layoutVariables = {
 			url : process.env.URL,
@@ -57,11 +57,11 @@ app.use((req, res, next) => {
 app.get('/', (req,res)=>{ 
 	
 	res.render('home');	
-})
+});
 //app.get('/tarefas', tarefaController.getTarefas(req,res)); 
 
 app.get('/tarefas', (req, res)=>{ 
-	console.log(req.session);
+	//console.log(req.session);
 	
 	tarefaController.getTarefas(req, res);
 });
@@ -70,6 +70,16 @@ app.
 get('/tarefas/:query', tarefaController.getTarefas); 
 app.post('/tarefa', tarefaController.addTarefa);
 app.get('/tarefa/:idTarefa', tarefaController.getTarefa); 
+
+/*app.get('/checar/:idTarefa', (req,res)=>{
+	console.log("checando");
+	console.log(req.body);
+	tarefaController.checar(req, res);
+});
+*/
+
+app.get('/checar/:idTarefa', tarefaController.checar);
+
 
 app.get('/login', (req,res)=>{ 
 	usuarioController.login(res);
@@ -89,6 +99,14 @@ app.get('/usuario/perfil/:idUsuario', (req,res)=>{
 
 app.get('/usuario/editar/:idUsuario', (req,res)=>{ 
 	usuarioController.editar(req, res);
+});
+
+app.post('/usuario/salvar', (req,res)=>{ //não finalizado ainda//
+	usuarioController.salvar(req, res);
+});
+
+app.get('/voltar', (req,res)=>{
+	res.render('home');	
 });
 
 app.get('/tarefa/delete/:idTarefa', tarefaController.deleteTarefa);

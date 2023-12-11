@@ -4,6 +4,18 @@
 			
 			<% tarefas.forEach(tarefa => { %> 
 				<li class="list-group-item" style="display:flex; justify-content: space-between">
+					<div class="form-check form-switch">
+						<%if(tarefa.status == 'P'){ %>
+							<a href="/checar/<%- tarefa.id_tarefa %>">
+								<button type="button" class="btn btn-danger"></button>
+							</a>
+						<%}else { %> 
+							<a href="/checar/<%- tarefa.id_tarefa %>">
+								<button type="button" class="btn btn-primary"></button> 
+							</a>
+						<%} %>
+							
+					</div>
 					<div>
 						<a href="/tarefa/<%- tarefa.id_tarefa %>"><%= tarefa.title %></a>
 					</div>
