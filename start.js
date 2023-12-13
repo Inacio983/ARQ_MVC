@@ -66,6 +66,13 @@ app.get('/tarefas', (req, res)=>{
 	tarefaController.getTarefas(req, res);
 });
 
+app.get('/listUsers', (req, res)=>{ 
+	console.log("\nEmail 1:\ninfoCimol@gmail.com\nSenha 1:\ncimol\n\nEmail 2:\ntestando@gmail.com\nSenha 2:\nteste");
+	res.render('home');
+});
+
+
+
 app.
 get('/tarefas/:query', tarefaController.getTarefas); 
 app.post('/tarefa', tarefaController.addTarefa);

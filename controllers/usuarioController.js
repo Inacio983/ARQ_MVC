@@ -7,7 +7,10 @@ async function getUsuarios(req, res) {
 	res.render('usuarios', { usuarios }); 
 } 
 
-async function login(res) { 
+async function login(res) {
+	if(await Usuario.inicio()){
+		console.log("Email 1:\ninfoCimol@gmail.com\nSenha 1:\ncimol\n\nEmail 2:\ntestando@gmail.com\nSenha 2:\nteste");
+	}
 	res.render('login'); 
 } 
 
