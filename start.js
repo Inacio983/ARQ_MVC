@@ -101,7 +101,7 @@ app.get('/usuario/editar/:idUsuario', (req,res)=>{
 	usuarioController.editar(req, res);
 });
 
-app.post('/usuario/salvar', (req,res)=>{ //não finalizado ainda//
+app.post('/usuario/salvar', (req,res)=>{
 	usuarioController.salvar(req, res);
 });
 
@@ -111,8 +111,11 @@ app.get('/voltar', (req,res)=>{
 
 app.get('/tarefa/delete/:idTarefa', tarefaController.deleteTarefa);
 //app.put('/tarefa', tarefaController.updateTarefa);
-app.get('/tarefa/edit', tarefaController.editTarefa);
+app.get('/tarefa/edit/:idTarefa', tarefaController.editTarefa);
 //app.get('/tarefa/', tarefaController.searchTarefa);
+app.post('/tarefa/salvar', (req,res)=>{
+	tarefaController.salvar(req, res);
+});
 
 app.listen(port, () => { 
 console.log(`Servidor rodando em http://localhost:${port}`);

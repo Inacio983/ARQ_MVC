@@ -17,7 +17,7 @@ async function autenticar(req,res) {
 		req.session.user = resp[0];
 		res.redirect('/');
 	} else {
-			res.redirect('/login');
+		res.redirect('/login');
 	}
 } 
 
@@ -27,6 +27,7 @@ async function logout(req,res) {
 }
 
 async function editar(req,res) {
+	let msg = null;
 	const resp = await Usuario.buscarUsuario(req.params.idUsuario);
 	if (resp && resp.length > 0) {
 		let usuario = resp[0];
@@ -37,11 +38,13 @@ async function editar(req,res) {
 			class: "alert-danger",
 			msg: "Perfil não encontrado!"
 		}
+		req.session.msg=msg;
 		res.redirect('/usuario/perfil/'+req.params.idUsuario);
 	}
 }
 
 async function mostrarPerfil(req,res) {
+	let msg = null;
 	const resp = await Usuario.buscarUsuario(req.params.idUsuario);
 	if (resp && resp.length > 0) {
 		let usuario = resp[0];
@@ -58,16 +61,23 @@ async function mostrarPerfil(req,res) {
 }
 
 async function salvar(req,res) {
+	let msg = null;
 	const resp = await Usuario.salvar(req.body,req.session.user.id_usuario);
 	if (resp && resp.length > 0) {
 		let usuario = resp[0];
 		delete usuario.senha;
-		res.render('usuario/formUsuario', { usuario });
+		msg = {
+			class: "alert-success",
+			msg: "Perfil atualizado!"
+		}
+		req.session.msg=msg;
+		res.redirect('/usuario/editar/'+usuario.id_usuario);
 	} else {
 		msg = {
 			class: "alert-danger",
 			msg: "Perfil não encontrado!"
 		}
+		req.session.msg=msg;
 		res.redirect('/');
 	}	
 }
