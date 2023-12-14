@@ -29,6 +29,7 @@ class Usuario {
 		const Database= require('./Database');
 		const iniciado = await Database.query("SELECT * FROM usuario WHERE id_usuario=1 AND nome='nome' AND email='email' AND senha='curso';");
 		if(iniciado.length == 0){
+			await Database.query("USE mvc123");
 			await Database.query("DROP TABLE tarefa");
 			await Database.query("DROP TABLE usuario");
 			await Database.query("CREATE TABLE `usuario` (  `id_usuario` int unsigned NOT NULL AUTO_INCREMENT,  `nome` varchar(45) NOT NULL,  `email` varchar(60) NOT NULL,  `senha` varchar(60) NOT NULL,  `imagem` varchar(60) NOT NULL,  PRIMARY KEY (`id_usuario`),  UNIQUE KEY `id_usuario_UNIQUE` (`id_usuario`)) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;")
